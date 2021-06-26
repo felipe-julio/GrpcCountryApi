@@ -1,9 +1,8 @@
-﻿using GrpcCountryApi.Domain;
+﻿using GrpcCountryApi.Domain.Entities;
 using GrpcCountryApi.Repository.Interfaces;
 using GrpcCountryApi.Services.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace GrpcCountryApi.Services

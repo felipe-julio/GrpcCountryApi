@@ -1,8 +1,5 @@
-﻿using GrpcCountryApi.Domain;
+﻿using GrpcCountryApi.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace GrpcCountryApi.Repository.Database
 {
@@ -14,6 +11,6 @@ namespace GrpcCountryApi.Repository.Database
         }
 
         public DbSet<Country> Country { get; set; }
-            
+
     }
 }

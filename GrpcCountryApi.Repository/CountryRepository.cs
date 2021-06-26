@@ -1,4 +1,4 @@
-﻿using GrpcCountryApi.Domain;
+﻿using GrpcCountryApi.Domain.Entities;
 using GrpcCountryApi.Repository.Database;
 using GrpcCountryApi.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;

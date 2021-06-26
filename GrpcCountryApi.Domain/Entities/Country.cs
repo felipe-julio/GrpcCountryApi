@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace GrpcCountryApi.Domain
+﻿namespace GrpcCountryApi.Domain.Entities
 {
     public class Country
     {

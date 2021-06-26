@@ -1,4 +1,4 @@
-﻿using GrpcCountryApi.Domain;
+﻿using GrpcCountryApi.Domain.Entities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
