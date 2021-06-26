@@ -10,13 +10,21 @@ namespace GrpcCountryApi
             CreateHostBuilder(args).Build().Run();
         }
 
-        // Additional configuration is required to successfully run gRPC on macOS.
-        // For instructions on how to configure Kestrel and gRPC clients on macOS, visit https://go.microsoft.com/fwlink/?linkid=2099682
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                }).ConfigureAppConfiguration((context, config) =>
+                {
+                    //config.AddUserSecrets<Startup>();
+
+                    //var builtConfig = config.Build();
+                    //config.AddAzureKeyVault(
+                    //    $"https://{builtConfig["KeyVault:Vault"]}.vault.azure.net/",
+                    //    builtConfig["KeyVault:ClientId"],
+                    //    builtConfig["KeyVault:ClientSecret"],
+                    //    new DefaultKeyVaultSecretManager());
                 });
     }
 }

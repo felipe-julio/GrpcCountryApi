@@ -81,10 +81,10 @@ namespace GrpcCountryApi
 
             services.AddGrpcValidation();
 
-            services.AddAutoMapper(Assembly.Load("DemoGrpc.Web"));
+            services.AddAutoMapper(Assembly.Load("GrpcCountryApi.Web"));
 
-            services.AddScoped<ICountryService, CountryService>();
             services.AddScoped<ICountryRepository, EFCountryRepository>();
+            services.AddScoped<ICountryService, CountryService>();
 
             //services.AddApplicationInsightsTelemetry();
 
