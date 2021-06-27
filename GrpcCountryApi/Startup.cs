@@ -25,7 +25,7 @@ namespace GrpcCountryApi
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-        }
+        }   
 
         public IConfiguration Configuration { get; }
 
@@ -60,26 +60,27 @@ namespace GrpcCountryApi
                 context.SaveChanges();
             }
 
-            services.AddGrpc(options =>
-            {
-                options.EnableMessageValidation();
-                options.Interceptors.Add<LoggerInterceptor>();
-            });
+            //services.AddGrpc(options =>
+            //{
+            //    options.EnableMessageValidation();
+            //    options.Interceptors.Add<LoggerInterceptor>();
+            //});
+            services.AddGrpc();
 
-            services.AddCors(o =>
-            {
-                o.AddPolicy("MyPolicy", builder =>
-                {
-                    builder.AllowAnyOrigin();
-                    builder.AllowAnyMethod();
-                    builder.AllowAnyHeader();
-                    builder.WithExposedHeaders("Grpc-Status", "Grpc-Message");
-                });
-            });
+            //services.AddCors(o =>
+            //{
+            //    o.AddPolicy("MyPolicy", builder =>
+            //    {
+            //        builder.AllowAnyOrigin();
+            //        builder.AllowAnyMethod();
+            //        builder.AllowAnyHeader();
+            //        builder.WithExposedHeaders("Grpc-Status", "Grpc-Message");
+            //    });
+            //});
 
-            services.AddValidator<CountryCreateRequestValidator>();
+            //services.AddValidator<CountryCreateRequestValidator>();
 
-            services.AddGrpcValidation();
+            //services.AddGrpcValidation();
 
             services.AddAutoMapper(Assembly.Load("GrpcCountryApi.Web"));
 
@@ -106,7 +107,7 @@ namespace GrpcCountryApi
 
             app.UseRouting();
 
-            app.UseCors("MyPolicy");
+           // app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseGrpcWeb();
 
@@ -114,7 +115,7 @@ namespace GrpcCountryApi
             {
                 var protoService = endpoints.ServiceProvider.GetRequiredService<ProtoService>();
 
-                endpoints.MapGrpcService<CountryGrpcServiceV1>().RequireCors("MyPolicy").EnableGrpcWeb();
+                endpoints.MapGrpcService<CountryGrpcServiceV1>().EnableGrpcWeb();
 
                 endpoints.MapGet("/protos", async context =>
                 {
